@@ -1,0 +1,13 @@
+{
+  "name": "big-dog-stock-city",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js",
+    "build": "npx tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  }
+}
