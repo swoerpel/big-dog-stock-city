@@ -6,6 +6,19 @@ enum StockTicker {
     APPL = 'APPL',
 }
 
+const stockVolatility: Record<StockTicker,number> = {
+    [StockTicker.TSLA]: 0.12,
+    [StockTicker.PLTR]: 0.25,
+    [StockTicker.APPL]: 0.04,
+}
+
+const stockStartingPrices: Record<StockTicker,number> = {
+    [StockTicker.TSLA]: 200,
+    [StockTicker.PLTR]: 50,
+    [StockTicker.APPL]: 200,
+}
+
+
 interface Stock {
     ticker: StockTicker;
     volatility: number;
@@ -17,7 +30,6 @@ interface TradingDay {
     ticker: StockTicker;
     startValue: number;
     endValue: number;
-    changePercentage: number;
 }
 
 
@@ -49,13 +61,8 @@ function generateDefaultStocks(): Stock[] {
 
 function runTheMarket(stocks: Stock[], numDays: number): Stock[] {
     // this is just here to prevent TS syntax errors
-    return [];
+    return stocks;
 }
-
-
-// once you have ran the market, then figure out best/worse stocks
-// and best/worse days across all stocks
-
 
 // create separate functions for the following cases
 // - return overall biggest gain stock
@@ -83,3 +90,24 @@ function getTradingDayWithLargestDecrease(stocks: Stock[]): TradingDay {
     return stocks[0].tradingDays[0];
 }
 
+
+
+// running the program
+// - create default stocks
+// - run the market on all stocks for N days
+// - get best/worst stocks and trading days
+const numDays = 5;
+const defaultStocks: Stock[] = generateDefaultStocks();
+
+const updatedStocks: Stock[] = runTheMarket(defaultStocks, numDays);
+console.dir(updatedStocks, {depth: null, colors: true})
+
+// const bestPerformingStock: Stock = getLargestTotalStockPriceIncrease(updatedStocks)
+// const worstPerformingStock: Stock = getLargestTotalStockPriceIncrease(updatedStocks)
+// const bestTradingDay: TradingDay = getTradingDayWithLargestIncrease(updatedStocks)
+// const worstTradingDay: TradingDay = getTradingDayWithLargestDecrease(updatedStocks)
+
+// console.log('best stock', bestPerformingStock)
+// console.log('worst stock', worstPerformingStock)
+// console.log('best day', bestTradingDay)
+// console.log('worst day', worstTradingDay)
