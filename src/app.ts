@@ -10,6 +10,7 @@ enum StockTicker{
 }
 
 
+
 interface Stock{
     ticker: StockTicker;
     volatility: number;
