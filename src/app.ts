@@ -10,8 +10,6 @@ interface Stock {
     ticker: StockTicker;
     volatility: number;
     currentPrice: number;
-    bestTradingDayPercentage: number;
-    worstTradingDayPercentage: number;
     tradingDays: TradingDay[];
 }
 
@@ -28,8 +26,6 @@ const stock: Stock = {
     ticker: StockTicker.APPL,
     volatility: 0.045,
     currentPrice: 200,
-    bestTradingDayPercentage: 0,
-    worstTradingDayPercentage: 0,
     tradingDays: [],
 }
 
