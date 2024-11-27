@@ -1,17 +1,12 @@
-
-
 console.log('Lets party big dog');
 
-
-enum StockTicker{
+enum StockTicker {
     TSLA = 'TSLA',
     PLTR = 'PLTR',
     APPL = 'APPL',
 }
 
-
-
-interface Stock{
+interface Stock {
     ticker: StockTicker;
     volatility: number;
     currentPrice: number;
@@ -20,13 +15,15 @@ interface Stock{
     tradingDays: TradingDay[];
 }
 
-interface TradingDay{
+interface TradingDay {
     ticker: StockTicker;
     startValue: number;
     endValue: number;
     changePercentage: number;
 }
 
+
+// example of a default stock
 const stock: Stock = {
     ticker: StockTicker.APPL,
     volatility: 0.045,
@@ -38,35 +35,54 @@ const stock: Stock = {
 
 
 // create a function that returns a list of stocks
-// with empty training days
+// in a default state, where they have a random currentPrice
+// volatility, zero trading day percentages, and empty array of
+// trading days
+
+function generateDefaultStocks(): Stock[] {
+    // this is just here to prevent TS syntax errors
+    return [];
+}
+
+// create a function that takes
+// - array of stocks
+// - number of days
+// returns 
+// - updated array of stocks that ran for the input # of days
+
+function runTheMarket(stocks: Stock[], numDays: number): Stock[] {
+    // this is just here to prevent TS syntax errors
+    return [];
+}
 
 
+// once you have ran the market, then figure out best/worse stocks
+// and best/worse days across all stocks
 
 
+// create separate functions for the following cases
+// - return overall biggest gain stock
+// - return overall biggest loss stock
+// - return overall largest single day gain for any stock
+// - return overall largest single day loss for any stock
 
+function getLargestTotalStockPriceIncrease(stocks: Stock[]): Stock {
+    // this is just here to prevent TS syntax errors
+    return stocks[0];
+}
 
+function getLargestTotalStockPriceDecrease(stocks: Stock[]): Stock {
+    // this is just here to prevent TS syntax errors
+    return stocks[0];
+}
 
-// const numDays = 5;
+function getTradingDayWithLargestIncrease(stocks: Stock[]): TradingDay {
+    // this is just here to prevent TS syntax errors
+    return stocks[0].tradingDays[0];
+}
 
-// // current price of the stock
-// let teslaPrice = 200;
+function getTradingDayWithLargestDecrease(stocks: Stock[]): TradingDay {
+    // this is just here to prevent TS syntax errors
+    return stocks[0].tradingDays[0];
+}
 
-// // the most the price can change on a given day (+ or -)
-// const variability = 0.1;
-
-
-// // calculates the price after a given number of days
-// function runTheMarket(numDays: number, price: number, variability: number): number{
-//     let currentPrice = price;
-//     for(let i = 0; i < numDays; i++){
-//         const positive = Math.random() > 0.5 ? 1 : -1;
-//         const change = Math.random() * variability * positive * currentPrice;
-//         currentPrice += change
-//     }
-//     return currentPrice;
-// }
-
-// const result = runTheMarket(numDays, teslaPrice, variability)
-
-
-// console.log('result',result)
