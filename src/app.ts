@@ -38,6 +38,7 @@ const stock: Stock = {
 // in a default state, where they have a random currentPrice
 // volatility, zero trading day percentages, and empty array of
 // trading days
+// we should loop over the values in the StockTicker enum
 
 function generateDefaultStocks(): Stock[] {
     // this is just here to prevent TS syntax errors
