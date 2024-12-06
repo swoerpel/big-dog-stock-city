@@ -44,13 +44,64 @@ const stock: Stock = {
 
 // create a function that returns a list of stocks
 // in a default state, where they have a random currentPrice
-// volatility, zero trading day percentages, and empty array of
+// volatility, and empty array of
 // trading days
 // we should loop over the values in the StockTicker enum
 
 function generateDefaultStocks(): Stock[] {
-    // this is just here to prevent TS syntax errors
-    return [];
+    const stocks: Stock[] = [];
+
+    const teslaStock: Stock = {
+        ticker: StockTicker.TSLA,
+        volatility: stockVolatility[StockTicker.TSLA],
+        currentPrice: stockStartingPrices[StockTicker.TSLA],
+        tradingDays: [],
+    }
+
+    stocks.push(teslaStock);
+
+    const palantirStock: Stock = {
+        ticker: StockTicker.PLTR,
+        volatility: stockVolatility[StockTicker.PLTR],
+        currentPrice: stockStartingPrices[StockTicker.PLTR],
+        tradingDays: [],
+    }
+
+    stocks.push(palantirStock);
+
+    const appleStock: Stock = {
+        ticker: StockTicker.APPL,
+        volatility: stockVolatility[StockTicker.APPL],
+        currentPrice: stockStartingPrices[StockTicker.APPL],
+        tradingDays: [],
+    }
+
+    stocks.push(appleStock);
+
+    return stocks;
+}
+
+function runTheMarket_SingleStock(singleStock: Stock, numDays: number): Stock {
+
+    let currentPrice = singleStock.currentPrice;
+    for (let j = 0; j < numDays; j++) {
+
+        const currentDay: TradingDay = {
+            ticker: singleStock.ticker,
+            startValue: currentPrice,
+            endValue: 0,
+        }
+
+        const direction = Math.random() > 0.5 ? 1 : -1;
+        const change = Math.random() * singleStock.volatility * direction * currentPrice;
+        currentPrice += change;
+
+        currentDay.endValue = currentPrice;
+        singleStock.tradingDays.push(currentDay);
+    }
+    singleStock.currentPrice = currentPrice;
+    
+    return singleStock;
 }
 
 // create a function that takes
@@ -60,7 +111,10 @@ function generateDefaultStocks(): Stock[] {
 // - updated array of stocks that ran for the input # of days
 
 function runTheMarket(stocks: Stock[], numDays: number): Stock[] {
-    // this is just here to prevent TS syntax errors
+
+    for (let i = 0; i < stocks.length; i++) {
+        runTheMarket_SingleStock(stocks[i], numDays);
+    }
     return stocks;
 }
 
