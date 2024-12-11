@@ -48,7 +48,7 @@ const stock: Stock = {
 // trading days
 // we should loop over the values in the StockTicker enum
 
-function generateDefaultStocks(): Stock[] {
+const generateDefaultStocks = (): Stock[] => {
     const stocks: Stock[] = [];
 
     const teslaStock: Stock = {
@@ -81,7 +81,7 @@ function generateDefaultStocks(): Stock[] {
     return stocks;
 }
 
-function runTheMarket_SingleStock(singleStock: Stock, numDays: number): Stock {
+const runTheMarket_SingleStock = (singleStock: Stock, numDays: number): Stock => {
 
     let currentPrice = singleStock.currentPrice;
     for (let j = 0; j < numDays; j++) {
@@ -110,7 +110,7 @@ function runTheMarket_SingleStock(singleStock: Stock, numDays: number): Stock {
 // returns 
 // - updated array of stocks that ran for the input # of days
 
-function runTheMarket(stocks: Stock[], numDays: number): Stock[] {
+const runTheMarket = (stocks: Stock[], numDays: number): Stock[] => {
 
     for (let i = 0; i < stocks.length; i++) {
         runTheMarket_SingleStock(stocks[i], numDays);
@@ -124,22 +124,22 @@ function runTheMarket(stocks: Stock[], numDays: number): Stock[] {
 // - return overall largest single day gain for any stock
 // - return overall largest single day loss for any stock
 
-function getLargestTotalStockPriceIncrease(stocks: Stock[]): Stock {
+const getLargestTotalStockPriceIncrease = (stocks: Stock[]): Stock => {
     // this is just here to prevent TS syntax errors
     return stocks[0];
 }
 
-function getLargestTotalStockPriceDecrease(stocks: Stock[]): Stock {
+const getLargestTotalStockPriceDecrease = (stocks: Stock[]): Stock => {
     // this is just here to prevent TS syntax errors
     return stocks[0];
 }
 
-function getTradingDayWithLargestIncrease(stocks: Stock[]): TradingDay {
+const getTradingDayWithLargestIncrease = (stocks: Stock[]): TradingDay => {
     // this is just here to prevent TS syntax errors
     return stocks[0].tradingDays[0];
 }
 
-function getTradingDayWithLargestDecrease(stocks: Stock[]): TradingDay {
+const getTradingDayWithLargestDecrease = (stocks: Stock[]): TradingDay => {
     // this is just here to prevent TS syntax errors
     return stocks[0].tradingDays[0];
 }
