@@ -30,44 +30,37 @@ interface Database{
     [Collection.Purchases]: Purchase[];
 }
 
+
+// this is mimicing a database
+// we will add, remove, and update records in this dict
+// upon restarting the server this will be cleared
 const database: Database = {
     [Collection.Users]: [],
     [Collection.Purchases]: []
 }
 
+// generateId() can be used to create unique, random ids
 
 const app = express();
 
 app.post('/user', (req: Request, res: Response<any>) => {
-    const {name,age} = req.body;
-    const user: User = {
-        id: generateId(),
-        name,
-        age,
-        createdOn: new Date()
-    }
-    database[Collection.Users].push(user);
-    res.send(user);
+    // return created user
+    res.send(null);
 });
 
-app.get('/user', (req: Request, res: Response<User[]>) => {
-    res.send(database[Collection.Users]);
+app.get('/users', (req: Request, res: Response<User[]>) => {
+    // return all users
+    res.send([]);
 });
 
 app.post('/purchase', (req: Request, res: Response<any>) => {
-    const {userId, amount} = req.body;
-    const purchase: Purchase = {
-        id: generateId(),
-        userId,
-        amount,
-        timestamp: new Date()
-    }
-    database[Collection.Purchases].push(purchase);
-    res.send(purchase);
+    // return created purchase
+    res.send(null);
 });
 
 app.get('/purchase', (req: Request, res: Response<Purchase[]>) => {
-    res.send(database[Collection.Purchases]);
+    // return all purchases
+    res.send([]);
 });
 
 
