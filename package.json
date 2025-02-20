@@ -4,6 +4,7 @@
   "scripts": {
     "start": "npx ts-node-dev --respawn src/app.ts",
     "start-test": "npx ts-node-dev --respawn src/test.ts",
+    "start-cards": "npx ts-node-dev --respawn src/cards.ts",
     "start-functional": "npx ts-node-dev --respawn src/functional.ts",
     "start-server": "npx ts-node-dev --respawn src/server.ts"
   },
