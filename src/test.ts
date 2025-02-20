@@ -16,4 +16,7 @@ const vowelCount = animals.map((str: string): number => {
 	return count;
 })
 
+
+console.log('CATS AND DOGS')
+
 console.log("vowelCount", vowelCount);
